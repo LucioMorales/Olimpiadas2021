@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content%}
+
+<h1>Customer</h1>
+{% for local in store %}
+    <h3>Local: {{local.name}} | Personas en el Local: {{local.currentAmount}} |</h3>
+
+    
+{% endfor %}
+
+{% endblock %}

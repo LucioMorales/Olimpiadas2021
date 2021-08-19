@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content%}
+
+<h1>Manager</h1>
+{% for manager in store %}
+    <h3>Manager: {{manager.manager}} | Store name: {{manager.name}}</h3>
+
+    
+{% endfor %}
+
+{% endblock %}
