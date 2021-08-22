@@ -22,3 +22,19 @@ def managerview(request):
     }
 
     return render(request,"manager.html",context)
+
+#dynamic html para descuentos
+
+
+def discountsview(request, localN):
+    
+    localname = Store.objects.get(name=localN)
+
+    store = Store.objects.all()
+
+    context = {
+    "store": store,
+    "localname": localname
+    }
+
+    return render(request, 'discounts.html', context)

@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.homeview, name = "customer"),
-    path('manager/', views.managerview, name = "manager"),
+    path('adminsite/', views.managerview, name = "adminsite"),
+    path('discounts/<str:localN>/',views.discountsview, name='localname'),
 ]

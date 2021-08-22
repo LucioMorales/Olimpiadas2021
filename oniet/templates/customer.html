@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content%}
 
-<h1>Customer</h1>
 
 <div style="display: flex; flex-direction: row; flex-wrap: wrap">
     {% for local in store %}
@@ -11,7 +10,7 @@
             <h5 class="card-title">{{local.name}}</h5>
             <p class="card-text">Personas en el Local: {{local.currentAmount}}</p>
             <p class="card-text">Personas en el Local: {{local.maxCapacity}}</p>
-            <a href="#" class="btn btn-primary">Ver Descuentos</a>
+            <a href="/discounts/{{local.name}}" class="btn btn-primary" style="display: block; margin-left: auto; margin-right: auto; width: 100%;">Ver Descuentos</a>
             </div>
         </div>
         
