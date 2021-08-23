@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import *
+import pyfirmata
+import time 
 
 # Create your views here.
 
@@ -38,3 +40,35 @@ def discountsview(request, localN):
     }
 
     return render(request, 'discounts.html', context)
+
+
+def addPeople(pk):
+
+    board = pyfirmata.Arduino('/dev/ttyACM0')
+
+    button = board.digital[8]
+    previous_button_state = 0
+    ##BUTTON_PIN = board.get_pin('d:8:i')
+
+    it = pyfirmata.util.Iterator(board)
+    it.start()
+
+    button.mode = pyfirmata.INPUT
+
+    store = Store.objects.get(id=1)
+    
+    ca = Store.objects.get()
+
+    while True:
+
+        time.sleep(0.01)
+        
+        button_state = button.read()
+        
+        if button_state != previous_button_state:
+            if button_state == 0:
+                store.currentAmount = +1;
+                store.currentAmount.save()
+                print(store)
+
+        previous_button_state = button_state
